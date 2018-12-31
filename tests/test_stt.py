@@ -36,7 +36,7 @@ class TestSTT(unittest.TestCase):
 
     def testTranscribeJasper(self):
         """
-        Does Jasper recognize his name (i.e., passive listen)?
+        Does Assistant recognize his name (i.e., passive listen)?
         """
         with open(self.jasper_clip, mode="rb") as f:
             transcription = self.passive_stt_engine.transcribe(f)
@@ -44,7 +44,7 @@ class TestSTT(unittest.TestCase):
 
     def testTranscribe(self):
         """
-        Does Jasper recognize 'time' (i.e., active listen)?
+        Does Assistant recognize 'time' (i.e., active listen)?
         """
         with open(self.time_clip, mode="rb") as f:
             transcription = self.active_stt_engine.transcribe(f)

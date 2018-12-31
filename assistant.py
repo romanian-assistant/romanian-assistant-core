@@ -18,7 +18,7 @@ from client.conversation import Conversation
 # Add jasperpath.LIB_PATH to sys.path
 sys.path.append(jasperpath.LIB_PATH)
 
-parser = argparse.ArgumentParser(description='Jasper Voice Control Center')
+parser = argparse.ArgumentParser(description='Assistant Voice Control Center')
 parser.add_argument('--local', action='store_true',
                     help='Use text input instead of a real microphone')
 parser.add_argument('--no-network-check', action='store_true',
@@ -34,7 +34,7 @@ else:
     from client.mic import Mic
 
 
-class Jasper(object):
+class Assistant(object):
     def __init__(self):
         self._logger = logging.getLogger(__name__)
 
@@ -49,7 +49,7 @@ class Jasper(object):
 
         # Check if config dir is writable
         if not os.access(jasperpath.CONFIG_PATH, os.W_OK):
-            self._logger.critical("Config dir %s is not writable. Jasper " +
+            self._logger.critical("Config dir %s is not writable. Assistant " +
                                   "won't work correctly.",
                                   jasperpath.CONFIG_PATH)
 
@@ -120,6 +120,7 @@ class Jasper(object):
         conversation = Conversation("JASPER", self.mic, self.config)
         conversation.handleForever()
 
+
 if __name__ == "__main__":
 
     print("*******************************************************")
@@ -135,7 +136,7 @@ if __name__ == "__main__":
         logger.setLevel(logging.DEBUG)
 
     if not args.no_network_check and not diagnose.check_network_connection():
-        logger.warning("Network not connected. This may prevent Jasper from " +
+        logger.warning("Network not connected. This may prevent Assistant from " +
                        "running properly.")
 
     if args.diagnose:
@@ -143,7 +144,7 @@ if __name__ == "__main__":
         sys.exit(0 if not failed_checks else 1)
 
     try:
-        app = Jasper()
+        app = Assistant()
     except Exception:
         logger.error("Error occured!", exc_info=True)
         sys.exit(1)

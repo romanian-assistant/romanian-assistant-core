@@ -1,6 +1,6 @@
 # -*- coding: utf-8-*-
 """
-A Speaker handles audio output from Jasper to the user
+A Speaker handles audio output from Assistant to the user
 
 Speaker methods:
     say - output 'phrase' as speech
@@ -131,7 +131,7 @@ class DummyTTS(AbstractTTSEngine):
 
 class EspeakTTS(AbstractTTSEngine):
     """
-    Uses the eSpeak speech synthesizer included in the Jasper disk image
+    Uses the eSpeak speech synthesizer included in the Assistant disk image
     Requires espeak to be available
     """
 
@@ -678,7 +678,7 @@ def get_engines():
             if hasattr(tts_engine, 'SLUG') and tts_engine.SLUG]
 
 if __name__ == '__main__':
-    parser = argparse.ArgumentParser(description='Jasper TTS module')
+    parser = argparse.ArgumentParser(description='Assistant TTS module')
     parser.add_argument('--debug', action='store_true',
                         help='Show debug messages')
     args = parser.parse_args()
